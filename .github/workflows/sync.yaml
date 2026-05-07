@@ -1,0 +1,16 @@
+name: Sync Mirror
+on:
+  schedule:
+    - cron: '0 * * * *' # Every hour
+  workflow_dispatch: # Allows manual trigger
+
+jobs:
+  mirror_sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repo Mirror Sync
+        uses: repo-sync/github-sync@v2
+        with:
+          source_repo: "https://github.com"
+          target_repo: "https://github.com"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
