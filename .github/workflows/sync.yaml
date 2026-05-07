@@ -11,6 +11,6 @@ jobs:
       - name: Repo Mirror Sync
         uses: repo-sync/github-sync@v2
         with:
-          source_repo: "https://github.com"
-          target_repo: "https://github.com"
+          source_repo: "https://github.com/tianocore/edk2.git"
+          target_repo: "https://github.com/Assiduous-Consulting-Inc/uefi-rust-port.gitm"
           github_token: ${{ secrets.GITHUB_TOKEN }}
