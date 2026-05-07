@@ -12,5 +12,4 @@ jobs:
         uses: repo-sync/github-sync@v2
         with:
           source_repo: "https://github.com/tianocore/edk2.git"
-          target_repo: "https://github.com/Assiduous-Consulting-Inc/uefi-rust-port.git"
           github_token: ${{ secrets.SYNC_TOKEN }}
