@@ -1,13 +1,20 @@
 name: Sync Mirror
 on:
   schedule:
-    - cron: '0 * * * *' # Every hour
-  workflow_dispatch: # Allows manual trigger
+    - cron: '0 * * * *'
+  workflow_dispatch:
 
 jobs:
   mirror_sync:
     runs-on: ubuntu-latest
     steps:
+      # 1. This step is required to initialize the git repo in the runner
+      - name: Checkout destination repo
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false # Recommended for sync actions
+
+      # 2. Now run the sync action
       - name: Repo Mirror Sync
         uses: repo-sync/github-sync@v2
         with:
