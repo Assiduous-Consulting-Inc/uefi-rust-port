@@ -1,4 +1,5 @@
 name: Sync Mirror
+
 on:
   schedule:
     - cron: '0 * * * *'
@@ -7,16 +8,17 @@ on:
 jobs:
   mirror_sync:
     runs-on: ubuntu-latest
+
     steps:
-      # 1. This step is required to initialize the git repo in the runner
       - name: Checkout destination repo
         uses: actions/checkout@v4
         with:
-          persist-credentials: false # Recommended for sync actions
+          persist-credentials: false
 
-      # 2. Now run the sync action
       - name: Repo Mirror Sync
         uses: repo-sync/github-sync@v2
         with:
           source_repo: "https://github.com/tianocore/edk2.git"
+          source_branch: "master"
+          destination_branch: "main"
           github_token: ${{ secrets.SYNC_TOKEN }}
